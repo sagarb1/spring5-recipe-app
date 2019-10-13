@@ -1,6 +1,7 @@
 package com.sagar.spring5recipeapp.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -18,7 +19,8 @@ public class Recipe {
     private Integer serving;
     private String source;
     private String url;
-    private String direction;
+    @Lob
+    private String directions;
 
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
@@ -29,14 +31,15 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
-    @OneToMany
-    private Set<Ingredient> ingredients;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name="recipe_category",
-    joinColumns = @JoinColumn(name = "recipe_id"),inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @JoinTable(name = "recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
+
 
     public Long getId() {
         return id;
@@ -94,12 +97,12 @@ public class Recipe {
         this.url = url;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getDirections() {
+        return directions;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setDirections(String directions) {
+        this.directions = directions;
     }
 
     public Difficulty getDifficulty() {
