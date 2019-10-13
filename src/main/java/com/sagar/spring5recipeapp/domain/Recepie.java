@@ -1,6 +1,7 @@
 package com.sagar.spring5recipeapp.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * created by sagar on 13-10-2019
@@ -24,6 +25,9 @@ public class Recepie {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "recipe")
+    private Set<Ingredient>  ingredients;
 
     public Long getId() {
         return id;
