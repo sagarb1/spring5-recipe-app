@@ -7,7 +7,7 @@ import java.util.Set;
  * created by sagar on 13-10-2019
  */
 @Entity
-public class Recepie {
+public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
