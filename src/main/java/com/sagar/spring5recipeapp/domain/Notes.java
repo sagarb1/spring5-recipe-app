@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 
 
-@EqualsAndHashCode(exclude = {"recipe"})
+@EqualsAndHashCode(exclude = {"templates/recipe"})
 @Entity
 public class Notes {
     @Id
