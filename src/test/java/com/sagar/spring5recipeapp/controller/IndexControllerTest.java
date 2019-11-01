@@ -31,10 +31,10 @@ public class IndexControllerTest {
     @Mock
     Model model;
 
-    IndexController controller;
+    private IndexController controller;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
 
         controller = new IndexController(recipeService);
@@ -58,8 +58,10 @@ public void MokMVC() throws Exception{
         when(recipeService.getRecipes()).thenReturn(recipes);
         ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
 
-
+        //when
         String viewName = controller.getIndexPage(model);
+
+
         //then
         assertEquals("index", viewName);
         verify(recipeService, times(1)).getRecipes();

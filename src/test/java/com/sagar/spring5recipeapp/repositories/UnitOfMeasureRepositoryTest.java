@@ -22,7 +22,7 @@ public class UnitOfMeasureRepositoryTest {
     @Autowired
     UnitOfMeasureRepository unitOfMeasureRepository;
 @Before
-public void setUp() throws Exception{
+public void setUp() {
 
 }
     @Test

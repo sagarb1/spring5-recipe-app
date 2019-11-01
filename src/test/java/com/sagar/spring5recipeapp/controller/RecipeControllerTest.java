@@ -23,10 +23,10 @@ public class RecipeControllerTest {
     @Mock
     RecipeService recipeService;
 
-    RecipeController controller;
+    private RecipeController controller;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
 
         controller = new RecipeController(recipeService);
@@ -44,6 +44,7 @@ public class RecipeControllerTest {
 
         mockMvc.perform(get("/recipe/show/1"))
                 .andExpect(status().isOk())
+                .andExpect(view().name("recipe/show"))
                 .andExpect(view().name("recipe/show"));
     }
 }

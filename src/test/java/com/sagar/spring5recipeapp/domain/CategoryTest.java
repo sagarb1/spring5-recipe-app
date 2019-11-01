@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
  * created by sagar on 16-10-2019
  */
 public class CategoryTest {
-     Category category;
+    private Category category;
     @Before
     public void setUp(){
 category=new Category();
