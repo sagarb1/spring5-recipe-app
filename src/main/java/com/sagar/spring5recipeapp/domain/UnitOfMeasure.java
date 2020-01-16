@@ -1,24 +1,21 @@
 package com.sagar.spring5recipeapp.domain;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * created by sagar on 13-10-2019
  */
-
 @Data
-@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
-public class Notes {
+public class UnitOfMeasure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    private Recipe recipe;
-    @Lob
-    private String recipeNotes;
+    private  String description;
 
 }

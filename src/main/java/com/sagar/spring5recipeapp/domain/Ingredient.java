@@ -1,11 +1,16 @@
 package com.sagar.spring5recipeapp.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
  * created by sagar on 13-10-2019
  */
+@Data
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Ingredient {
     @Id
@@ -14,38 +19,21 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    private UnitOfMeasure uom;
+
     @ManyToOne
-    private Recepie recepie;
+    private Recipe recipe;
 
-    public Long getId() {
-        return id;
+    public Ingredient() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom) {
         this.description = description;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
         this.amount = amount;
+        this.uom = uom;
+
     }
 
-    public Recepie getRecepie() {
-        return recepie;
-    }
 
-    public void setRecepie(Recepie recepie) {
-        this.recepie = recepie;
-    }
 }
